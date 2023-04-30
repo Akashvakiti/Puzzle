@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {Routes,Route} from 'react-router-dom';
-import Minesweep from './components/Minesweep.js';
+import Jigsaw from './components/Jigsaw';
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
          <Route path='/' element={<Home/>}/>
          <Route path='/users/Login' element={<Login/>}/>
          <Route path='/Signup' element={<Signup/>}/>
-         <Route path='/Minesweep' element={<Minesweep/>}/>
+         <Route path='/Jigsaw' element={<Jigsaw/>}/>
         </Routes>
       </div>
   );

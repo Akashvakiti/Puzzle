@@ -27,3 +27,12 @@ h10{
 form {
   box-shadow: 0 0 10px rgba(10, 11, 10, 0.2);
 }
+
+
+.puzzle-container {
+  border: 1px solid #606060;
+  width: 35rem;
+  margin: 0 auto;
+  border-radius: 1rem;
+  overflow: hidden;
+}
