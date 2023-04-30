@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Row } from 'react-bootstrap';
 import { Card } from 'react-bootstrap';
 import { Grid } from './grid';
-import './Cardtemp.css';
+import './Matchingpairs.css';
 export function Matchingpairs() {
   const cardImages=[
     {
@@ -48,12 +48,12 @@ export function Matchingpairs() {
   const [time,setTime]=useState(30);
   const [life,setLife]=useState(2);
   const shuffleCards=()=>{
-    if(life<=2 && life>=0){
+    if(life===2 ||life===1){
       setTime(30);
       setDisabled(false);
     }
     else{
-      // setDisabled(true);
+      setDisabled(true);
       setTime(0);
     }
     const shuffledCards=[...cardImages,...cardImages]
@@ -108,6 +108,7 @@ export function Matchingpairs() {
   useEffect(()=>{
     if(time===0){
       setDisabled(true);
+      console.log("time==0");
       setLife(life=>life-1);
     }
   },[time])

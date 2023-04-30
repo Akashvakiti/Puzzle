@@ -13,8 +13,8 @@ function Home () {
       <Nav.Link href="/users/Login">Already have an account?Login</Nav.Link>
       <Nav.Link href="/Signup">Create an account?Register</Nav.Link>
       <Routes>
-      <Route path='/Login' element={<Login/>}/>
-      <Route path='/Signup' element={<Signup/>}/>
+        <Route path='/Login' element={<Login/>}/>
+        <Route path='/Signup' element={<Signup/>}/>
       </Routes>
 
     </div>

@@ -18,12 +18,11 @@ function App() {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/users/Login">Login</Nav.Link>
             <Nav.Link href="/Signup">Signup</Nav.Link>
-            <Nav.Link href="/Matchingpairs">Matchingpairs</Nav.Link>
+            {/* <Nav.Link href="/Matchingpairs">Matchingpairs</Nav.Link> */}
           </Nav>
         </Container>
       </Navbar>
-  
-
+      
         <Routes>
          <Route path='/' element={<Home />}/>
          <Route path='/users/Login' element={<Login/>}/>

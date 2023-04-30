@@ -30,7 +30,7 @@ function Login() {
            console.log("Invalid username/password");
            else
            {
-            navigate('/Minesweep');
+            navigate('/Matchingpairs');
            console.log("login success");
            }
          }
