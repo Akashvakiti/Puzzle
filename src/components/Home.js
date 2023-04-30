@@ -9,14 +9,13 @@ function Home () {
   return (
     <div className='home'>
       <h3><FcPuzzle/><b>Puzzle game</b></h3>
-      <h4>Game rules</h4>
       <Nav.Link href="/users/Login">Already have an account?Login</Nav.Link>
       <Nav.Link href="/Signup">Create an account?Register</Nav.Link>
+      <h4>Game rules</h4>
       <Routes>
         <Route path='/Login' element={<Login/>}/>
         <Route path='/Signup' element={<Signup/>}/>
       </Routes>
-
     </div>
   )
 }

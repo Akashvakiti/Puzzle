@@ -11,8 +11,10 @@ function Login() {
     email:'',
     password:''
   })
+    const [num,setNum]=useState(0)
+    
     const submit=async(userobject)=>{
-     userobject.preventDefault() 
+     userobject.preventDefault(); 
      console.log(user)
 
      var userobj=
@@ -24,13 +26,17 @@ function Login() {
        .then((response)=>{
          if(response.data.message===`${user.email} doesn't exists`){
            console.log("No user exists");
+           setNum(1)
          }
          else{
-          if(response.data.message==="Invalid username/password")
+          if(response.data.message==="Invalid username/password"){
            console.log("Invalid username/password");
+           
+          }
            else
            {
             navigate('/Matchingpairs');
+            // navigate('/Jigsaw');
            console.log("login success");
            }
          }
@@ -44,8 +50,11 @@ function Login() {
     <div className='login w-50 mx-auto ' >
       <form onSubmit={submit}>
         <h1>Login</h1>
-        <input type='email' name="email" id="email" placeholder='Enter email' onChange={(e)=>setUser({email:e.target.value.toLowerCase()})} /> 
-        <input type='password' placeholder='Enter password' onChange={(e)=>setUser({...user,[user.password]:e.target.value})}/>
+        <input type='email' placeholder='*Enter email' onChange={(e)=>setUser({email:e.target.value})} /> 
+        {
+          num===1&&<h6 style={{color:'red'}}>No user exists</h6>
+        }
+        <input type='password' placeholder='*Enter password' onChange={(e)=>setUser({...user,[user.password]:e.target.value})}/>
         <Button variant='primary' type='submit'>Login <IoMdLogIn/></Button>
       </form>
     </div>

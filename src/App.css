@@ -32,12 +32,11 @@ form {
   box-shadow: 0 0 10px rgba(10, 11, 10, 0.2);
 }
 
-/* .card-grid{
-  text-align: center;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  row-gap: 20px;
-  padding: 30px 350px 0px 0px;
-   text-align: center;
-} */
 
+.puzzle-container {
+  border: 1px solid #606060;
+  width: 35rem;
+  margin: 0 auto;
+  border-radius: 1rem;
+  overflow: hidden;
+}
