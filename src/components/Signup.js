@@ -31,7 +31,7 @@ function Signup() {
     <div className='login w-50 mx-auto'>
       <form>
         <h1>Signup</h1>
-        <input type='text' placeholder='Enter email' onChange={(e)=>setEmail(e.target.value)} />
+        <input type='email' placeholder='Enter email' onChange={(e)=>setEmail(e.target.value)} />
         <input type='password' placeholder='Enter password' onChange={(e)=>setPassword(e.target.value)}/>
         <Button variant='primary' type='submit' onClick={submit}>Signup  <IoMdLogIn/></Button>
       </form> 

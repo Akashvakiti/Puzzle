@@ -20,7 +20,6 @@ function Login() {
        username:user.email,
        password:user.password
      }
-
        await axios.post('http://localhost:3000/users/login',userobj)
        .then((response)=>{
          if(response.data.message===`${user.email} doesn't exists`){
@@ -45,7 +44,7 @@ function Login() {
     <div className='login w-50 mx-auto ' >
       <form onSubmit={submit}>
         <h1>Login</h1>
-        <input type='text' placeholder='Enter email' onChange={(e)=>setUser({email:e.target.value})} /> 
+        <input type='email' name="email" id="email" placeholder='Enter email' onChange={(e)=>setUser({email:e.target.value.toLowerCase()})} /> 
         <input type='password' placeholder='Enter password' onChange={(e)=>setUser({...user,[user.password]:e.target.value})}/>
         <Button variant='primary' type='submit'>Login <IoMdLogIn/></Button>
       </form>

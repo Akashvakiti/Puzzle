@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {Routes,Route} from 'react-router-dom';
-import Minesweep from './components/Minesweep.js';
+import {Matchingpairs} from './components/Matchingpairs.js';
 
 function App() {
   return (
@@ -18,16 +18,17 @@ function App() {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/users/Login">Login</Nav.Link>
             <Nav.Link href="/Signup">Signup</Nav.Link>
+            <Nav.Link href="/Matchingpairs">Matchingpairs</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
   
 
         <Routes>
-         <Route path='/' element={<Home/>}/>
+         <Route path='/' element={<Home />}/>
          <Route path='/users/Login' element={<Login/>}/>
          <Route path='/Signup' element={<Signup/>}/>
-         <Route path='/Minesweep' element={<Minesweep/>}/>
+         <Route path='/Matchingpairs' element={<Matchingpairs />}/>
         </Routes>
       </div>
   );
