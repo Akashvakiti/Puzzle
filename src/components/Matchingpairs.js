@@ -46,8 +46,16 @@ export function Matchingpairs() {
   const [disabled,setDisabled]=useState(false);
   const [res,setRes]=useState(null);
   const [time,setTime]=useState(30);
+  const [life,setLife]=useState(2);
   const shuffleCards=()=>{
-    setTime(30);
+    if(life<=2 && life>=0){
+      setTime(30);
+      setDisabled(false);
+    }
+    else{
+      // setDisabled(true);
+      setTime(0);
+    }
     const shuffledCards=[...cardImages,...cardImages]
                         .sort(()=>Math.random()-0.5)
                         .map((card)=>({...card,id:Math.random() }))
@@ -57,7 +65,6 @@ export function Matchingpairs() {
     setTurn(0);
   }
   function handleChoice(card){
-    // console.log(card);
     chOne ? setChTwo(card) : setChOne(card);
   }
   useEffect(()=>{
@@ -80,22 +87,31 @@ export function Matchingpairs() {
       }
     }
   },[chOne,chTwo]);
+
   useEffect(()=>{
     shuffleCards();
-  },[])
+  },[]);
+
   useEffect(()=>{
     const x=cards.filter((card)=>card.matched===true)
     if(x.length===16)
       setRes("You won");
-  },[cards])
-  const int=setInterval(()=>setDisabled(true),30000)
-  setTimeout(()=>clearInterval(int),30000);
+  },[cards]);
+
   useEffect(()=>{
     const int= time>0 && setInterval(()=>{setTime(time=>time-1)},1000);
     return ()=>{
       clearInterval(int);
     }
+  },[time]);
+
+  useEffect(()=>{
+    if(time===0){
+      setDisabled(true);
+      setLife(life=>life-1);
+    }
   },[time])
+
   function resetChoices(){
     setChOne(null);
     setChTwo(null);
@@ -108,19 +124,6 @@ export function Matchingpairs() {
       <button className='btn bg-primary' onClick={shuffleCards}>Restart</button>
       <h2>Timer:{time}</h2>
       <p>{res}</p>
-      {/* <div className='card-grid'>
-        {
-          cards.map((card)=>(
-            <Cardtemp 
-            key={card.id} 
-            card={card}
-            handleChoice={handleChoice}
-            flipped={card===chOne||card===chTwo||card.matched}
-            disabled={disabled}
-            />
-          ))
-        }
-      </div> */}
       <div className='container'>
         <Row className='row'>{
           cards.map((card)=>(
