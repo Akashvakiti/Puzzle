@@ -7,6 +7,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {Routes,Route} from 'react-router-dom';
 import Jigsaw from './components/Jigsaw';
+import { Cross } from './components/Crossword';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/users/Login">Login</Nav.Link>
             <Nav.Link href="/Signup">Signup</Nav.Link>
+            <Nav.Link href="/CrossWord">Crossword</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -28,6 +30,7 @@ function App() {
          <Route path='/users/Login' element={<Login/>}/>
          <Route path='/Signup' element={<Signup/>}/>
          <Route path='/Jigsaw' element={<Jigsaw/>}/>
+         <Route path='/CrossWord' element={<Cross/>}/>
         </Routes>
       </div>
   );
