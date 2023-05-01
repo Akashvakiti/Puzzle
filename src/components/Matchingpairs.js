@@ -43,19 +43,13 @@ export function Matchingpairs() {
   const [turn,setTurn]=useState(0);
   const [chOne,setChOne]=useState(null);
   const [chTwo,setChTwo]=useState(null);
-  const [disabled,setDisabled]=useState(false);
+  const [disabled,setDisabled]=useState(true);
   const [res,setRes]=useState(null);
-  const [time,setTime]=useState(30);
+  const [time,setTime]=useState(null);
   const [life,setLife]=useState(2);
+  const [startBtn,setStartBtn]=useState(true);
+  const [resBtn,setResBtn]=useState(false);
   const shuffleCards=()=>{
-    if(life===2 ||life===1){
-      setTime(30);
-      setDisabled(false);
-    }
-    else{
-      setDisabled(true);
-      setTime(0);
-    }
     const shuffledCards=[...cardImages,...cardImages]
                         .sort(()=>Math.random()-0.5)
                         .map((card)=>({...card,id:Math.random() }))
@@ -67,6 +61,7 @@ export function Matchingpairs() {
   function handleChoice(card){
     chOne ? setChTwo(card) : setChOne(card);
   }
+  
   useEffect(()=>{
     if(chOne && chTwo){
       setDisabled(true);
@@ -96,7 +91,13 @@ export function Matchingpairs() {
     const x=cards.filter((card)=>card.matched===true)
     if(x.length===16)
       setRes("You won");
-  },[cards]);
+    else if(time===0 && life>0 && x.length!==16){
+      setRes("You Lost,Try Again")
+    }
+    else if(time===0 && life<=0 && x.length!==16){
+      setRes("You are out of your lives,Start from beginning");
+    }
+  },[life]);
 
   useEffect(()=>{
     const int= time>0 && setInterval(()=>{setTime(time=>time-1)},1000);
@@ -111,7 +112,7 @@ export function Matchingpairs() {
       console.log("time==0");
       setLife(life=>life-1);
     }
-  },[time])
+  },[time]);
 
   function resetChoices(){
     setChOne(null);
@@ -119,11 +120,38 @@ export function Matchingpairs() {
     setTurn(turn+1);
     setDisabled(false);
   }
-
+  function resetTimer(){
+    if(life!==2){
+      setTime(10);
+    }
+  }
   return (
     <div>
-      <button className='btn bg-primary' onClick={shuffleCards}>Restart</button>
-      <h2>Timer:{time}</h2>
+      <button className={resBtn?'resetf':'reseti'} 
+              onClick={()=>{
+                setRes(null)
+                shuffleCards();
+                if(life>0){
+                  setTime(10);
+                  setDisabled(false);
+                }
+                else{
+                  setTime(0);
+                  setDisabled(true);
+                }
+                }}
+              >Restart</button>
+      <button className={startBtn?'starti':'startf'} 
+              onClick={()=>{
+                // return
+                  setTime(10);
+                  setStartBtn(false);
+                  setResBtn(true)
+                  setDisabled(false);
+                  
+                }}
+              >Start</button>
+      <h2 className='mt-3'>Timer:{time}</h2>
       <p>{res}</p>
       <div className='container'>
         <Row className='row'>{

@@ -8,7 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import {Routes,Route} from 'react-router-dom';
 import { Matchingpairs } from './components/Matchingpairs.js';
 import Jigsaw from './components/Jigsaw';
-
+import { Cross } from './components/Cross';
 function App() {
   return (
     <div className='App'>
@@ -21,6 +21,7 @@ function App() {
             <Nav.Link href="/Signup">Signup</Nav.Link>
             <Nav.Link href="/Matchingpairs">Matchingpairs</Nav.Link>
             <Nav.Link href="/Jigsaw">Jig Saw</Nav.Link>
+            <Nav.Link href="/Crossword">Crossword</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -31,6 +32,7 @@ function App() {
          <Route path='/Signup' element={<Signup/>}/>
          <Route path='/Matchingpairs' element={<Matchingpairs />}/>
          <Route path='/Jigsaw' element={<Jigsaw/>}/>
+         <Route path='/Crossword' element={<Cross/>}/>
         </Routes>
       </div>
   );
