@@ -6,9 +6,9 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {Routes,Route} from 'react-router-dom';
+import { Matchingpairs } from './components/Matchingpairs.js';
 import Jigsaw from './components/Jigsaw';
-import { Cross } from './components/Crossword';
-
+import { Cross } from './components/Cross';
 function App() {
   return (
     <div className='App'>
@@ -19,18 +19,20 @@ function App() {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/users/Login">Login</Nav.Link>
             <Nav.Link href="/Signup">Signup</Nav.Link>
-            <Nav.Link href="/CrossWord">Crossword</Nav.Link>
+            <Nav.Link href="/Matchingpairs">Matchingpairs</Nav.Link>
+            <Nav.Link href="/Jigsaw">Jig Saw</Nav.Link>
+            <Nav.Link href="/Crossword">Crossword</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
-  
-
+      
         <Routes>
-         <Route path='/' element={<Home/>}/>
+         <Route path='/' element={<Home />}/>
          <Route path='/users/Login' element={<Login/>}/>
          <Route path='/Signup' element={<Signup/>}/>
+         <Route path='/Matchingpairs' element={<Matchingpairs />}/>
          <Route path='/Jigsaw' element={<Jigsaw/>}/>
-         <Route path='/CrossWord' element={<Cross/>}/>
+         <Route path='/Crossword' element={<Cross/>}/>
         </Routes>
       </div>
   );
