@@ -9,8 +9,8 @@ userApp.use(exp.json())
 
 //.....user authentication and it is common for every application.....
 
-userApp.post('/createUser',expressAsyncHandler(async (req,res)=>{
-    console.log("body",req.body);
+userApp.post('/createuser',expressAsyncHandler(async (req,res)=>{
+    // console.log("body",req.body);
     const authObj=req.app.get('authObj');
     //Search if username is already existed
     let result=await authObj.findOne({username:req.body.username})
@@ -23,7 +23,7 @@ userApp.post('/createUser',expressAsyncHandler(async (req,res)=>{
     {
         //otherwise, create new user
         let password=await bcryptjs.hash(req.body.password,5);
-        await authObj.insertOne({"username":req.body.username,"password":password});
+        await authObj.insertOne({"name":req.body.name,"username":req.body.username,"password":password});
         res.send({message:"User created Succesfully"});
     }  
 }));
@@ -35,7 +35,7 @@ userApp.post('/login',expressAsyncHandler(async(req,res)=>{
     let obj=await authObj.findOne({username:req.body.username})
     if(obj==null)
     {
-        res.send({message:`${req.body.username} doesn't exists`});
+        res.send({message:`${req.body.username} doesn't exists`,state:200});
         //console.log("No user exist");
     }
     else

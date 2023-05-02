@@ -7,34 +7,35 @@ import { useNavigate } from 'react-router-dom';
 export function Matchingpairs() {
   const cardImages=[
     {
-      src:'images/apples.png'
-    },
-    {
-      src:'images/broom.jpg',
+      src:'images/html5.png',
       matched:false
     },
     {
-      src:'images/cake.jpg',
+      src:'images/css3.png',
       matched:false
     },
     {
-      src:'images/ghost.png',
+      src:'images/JS.png',
       matched:false
     },
     {
-      src:'images/phone.jpg',
+      src:'images/bootstrap.png',
       matched:false
     },
     {
-      src:'images/pizza.jpg',
+      src:'images/react.png',
       matched:false
     },
     {
-      src:'images/toast.png',
+      src:'images/nodejs.png',
       matched:false
     },
     {
-      src:'images/pencil.jpg',
+      src:'images/mongo.png',
+      matched:false
+    },
+    {
+      src:'images/vue.jpg',
       matched:false
     },
 
@@ -125,19 +126,19 @@ export function Matchingpairs() {
               onClick={()=>{
                 setRes(null)
                 shuffleCards();
-                setTime(45);
+                setTime(40);
                 setDisabled(false);
                 }}
               >Try Again</button>
       <button className={startBtn?'starti':'startf'} 
               onClick={()=>{
-                  setTime(45);
+                  setTime(40);
                   setStartBtn(false);
                   setResBtn(true)
                   setDisabled(false);
                 }}
               >Start</button>
-      <button className={gameOver?'jigsawbtnf':'jigsawbtni'} onClick={()=>{navigate('/Jigsaw')}}>Next Game</button>
+      <button className={gameOver?'jigsawbtnf':'jigsawbtni'} onClick={()=>{navigate('/Jigsaw')}}>Proceed to Level-2</button>
       <h2 className='mt-3'>Timer:{time}</h2>
       <h3>{res}</h3>
       <div className='container'>

@@ -69,8 +69,8 @@ export function Cross() {
   }
   return (
     <>
-    <h1 className="text-center">Cross Word</h1>
-    <h3 className="text-center">{res}</h3>
+    <h1 className="text-center mt-3">Cross Word</h1>
+    <h3 className="text-center mt-5 mb-5">{res}</h3>
     <div className="Cross">
       <Crossword className='cross' data={data} onCrosswordCorrect={handleCross} />
     </div>
