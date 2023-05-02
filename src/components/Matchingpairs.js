@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 // import { Cardtemp } from './Cardtemp';
 import { Row } from 'react-bootstrap';
-import { Card } from 'react-bootstrap';
 import { Grid } from './grid';
 import './Matchingpairs.css';
+import { useNavigate } from 'react-router-dom';
 export function Matchingpairs() {
   const cardImages=[
     {
@@ -40,15 +40,15 @@ export function Matchingpairs() {
 
   ]
   const [cards,setCards]=useState([]);
-  const [turn,setTurn]=useState(0);
   const [chOne,setChOne]=useState(null);
   const [chTwo,setChTwo]=useState(null);
   const [disabled,setDisabled]=useState(true);
   const [res,setRes]=useState(null);
   const [time,setTime]=useState(null);
-  const [life,setLife]=useState(2);
+  const [life,setLife]=useState(1);
   const [startBtn,setStartBtn]=useState(true);
   const [resBtn,setResBtn]=useState(false);
+  const [gameOver,setGameOver]=useState(false);
   const shuffleCards=()=>{
     const shuffledCards=[...cardImages,...cardImages]
                         .sort(()=>Math.random()-0.5)
@@ -56,7 +56,6 @@ export function Matchingpairs() {
     setCards(shuffledCards);
     setChOne(null);
     setChTwo(null);
-    setTurn(0);
   }
   function handleChoice(card){
     chOne ? setChTwo(card) : setChOne(card);
@@ -88,71 +87,59 @@ export function Matchingpairs() {
   },[]);
 
   useEffect(()=>{
+    if(time===0){
+      setDisabled(true);
+    }
     const x=cards.filter((card)=>card.matched===true)
-    if(x.length===16)
+    if(x.length===16){
       setRes("You won");
+      setGameOver(true);
+    }
     else if(time===0 && life>0 && x.length!==16){
       setRes("You Lost,Try Again")
     }
     else if(time===0 && life<=0 && x.length!==16){
       setRes("You are out of your lives,Start from beginning");
     }
-  },[life]);
-
-  useEffect(()=>{
-    const int= time>0 && setInterval(()=>{setTime(time=>time-1)},1000);
-    return ()=>{
-      clearInterval(int);
-    }
   },[time]);
 
   useEffect(()=>{
-    if(time===0){
-      setDisabled(true);
-      console.log("time==0");
-      setLife(life=>life-1);
+    if(!gameOver){
+      const int= time>0 && setInterval(()=>{setTime(time=>time-1)},1000);
+      return ()=>{
+        clearInterval(int);
+      }
     }
+    
   },[time]);
 
   function resetChoices(){
     setChOne(null);
     setChTwo(null);
-    setTurn(turn+1);
     setDisabled(false);
   }
-  function resetTimer(){
-    if(life!==2){
-      setTime(10);
-    }
-  }
+  let navigate = useNavigate();
   return (
     <div>
-      <button className={resBtn?'resetf':'reseti'} 
+      <button className={resBtn?(gameOver?'resetx':'resetf'):'reseti'} 
               onClick={()=>{
                 setRes(null)
                 shuffleCards();
-                if(life>0){
-                  setTime(10);
-                  setDisabled(false);
-                }
-                else{
-                  setTime(0);
-                  setDisabled(true);
-                }
+                setTime(45);
+                setDisabled(false);
                 }}
-              >Restart</button>
+              >Try Again</button>
       <button className={startBtn?'starti':'startf'} 
               onClick={()=>{
-                // return
-                  setTime(10);
+                  setTime(45);
                   setStartBtn(false);
                   setResBtn(true)
                   setDisabled(false);
-                  
                 }}
               >Start</button>
+      <button className={gameOver?'jigsawbtnf':'jigsawbtni'} onClick={()=>{navigate('/Jigsaw')}}>Next Game</button>
       <h2 className='mt-3'>Timer:{time}</h2>
-      <p>{res}</p>
+      <h3>{res}</h3>
       <div className='container'>
         <Row className='row'>{
           cards.map((card)=>(
@@ -167,7 +154,6 @@ export function Matchingpairs() {
         }</Row>
       </div>
       
-      <p>Turns:{turn}</p>
       
     </div>
   )

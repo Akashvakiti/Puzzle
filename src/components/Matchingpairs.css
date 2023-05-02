@@ -4,21 +4,33 @@
 .startf{
     display: none; 
 }
+.jigsawbtni{
+ display: none;
+}
+.resetx{
+    display: none;
+}
 .resetf{
     background-color: blue;
 }
 .reseti{
     display: none;
 }
-.starti,.resetf{
+.jigsawbtnf{
+    background-color: goldenrod;
+}
+.starti,.resetf,.jigsawbtnf{
     margin-top: 20px;
     width: 150px;
     border-radius: 10px;
-    padding: 20px;
+    /* padding: 20px; */
     font-size: 1.5rem;
     font-weight: bolder; 
 }
-
+/* .row{
+    padding-left: 220px;
+    padding-right: 220px;
+} */
 .card{
     position: relative;
     height: 150px;
