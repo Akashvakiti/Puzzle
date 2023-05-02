@@ -1,5 +1,5 @@
 .starti{
-    background-color: greenyellow; 
+    background-color: rgb(255, 184, 52); 
 }
 .startf{
     display: none; 
@@ -11,13 +11,13 @@
     display: none;
 }
 .resetf{
-    background-color: blue;
+    background-color: rgb(255, 184, 52);
 }
 .reseti{
     display: none;
 }
 .jigsawbtnf{
-    background-color: goldenrod;
+    background-color: rgb(255, 184, 52);
 }
 .starti,.resetf,.jigsawbtnf{
     margin-top: 20px;
