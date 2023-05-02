@@ -1,6 +1,9 @@
 .nextbtni{
     display:none;
-    border: 2px solid red;
+    border: 10px solid red;
+}
+.nextbtnf{
+    border: 10px solid red;
 }
 .solved{
     display: none;

@@ -17,7 +17,7 @@ function App() {
           <Navbar.Brand href=""><b>Puzzle</b></Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/users/Login">Login</Nav.Link>
+            <Nav.Link href="/Login">Login</Nav.Link>
             <Nav.Link href="/Signup">Signup</Nav.Link>
             <Nav.Link href="/Matchingpairs">Matchingpairs</Nav.Link>
             <Nav.Link href="/Jigsaw">Jig Saw</Nav.Link>
@@ -28,7 +28,7 @@ function App() {
       
         <Routes>
          <Route path='/' element={<Home />}/>
-         <Route path='/users/Login' element={<Login/>}/>
+         <Route path='/Login' element={<Login/>}/>
          <Route path='/Signup' element={<Signup/>}/>
          <Route path='/Matchingpairs' element={<Matchingpairs />}/>
          <Route path='/Jigsaw' element={<Jigsaw/>}/>
