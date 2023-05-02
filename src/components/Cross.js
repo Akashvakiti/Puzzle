@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Crossword from "@jaredreisinger/react-crossword";
-
+import './Cross.css'
 const data = {
   across: {
     1: {
@@ -63,9 +63,17 @@ const data = {
 };
 
 export function Cross() {
+  const [res,setRes]=useState(null);
+  function handleCross(){
+    setRes("You did it,You conquered the cross!!");
+  }
   return (
+    <>
+    <h1 className="text-center">Cross Word</h1>
+    <h3 className="text-center">{res}</h3>
     <div className="Cross">
-      <Crossword data={data} />
+      <Crossword className='cross' data={data} onCrosswordCorrect={handleCross} />
     </div>
+    </>
   );
 }
