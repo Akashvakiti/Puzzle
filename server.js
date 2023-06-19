@@ -4,7 +4,7 @@ const userApp=require('./API/userApi')
 const mClient=require('mongodb').MongoClient
 var cors = require('cors')
 
-const DBurl="mongodb+srv://spotify:spotify@cluster0.aeb04.mongodb.net/?retryWrites=true&w=majority"
+const MONGO_URI="mongodb+srv://spotify:spotify@cluster0.aeb04.mongodb.net/?retryWrites=true&w=majority"
 app.use(cors()) // Use this after the variable declaration
 
 //connect react and node.
@@ -13,7 +13,7 @@ const path=require('path')
 app.use(exp.static(path.join(__dirname,'./build')))
 
 
-mClient.connect(DBurl)
+mClient.connect(process.env.MONGO_URI)
 .then((client)=>{
     console.log("Connection successful")
 
@@ -46,4 +46,4 @@ app.use((err,req,res,next)=>{
 })
 
 //our backend is running on 3000 port
-app.listen(3000,()=>{console.log("Server is listining")})
+app.listen(process.env.PORT||3000,()=>{console.log("Server is listining")})
